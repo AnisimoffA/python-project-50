@@ -7,6 +7,9 @@ def main():
     # позиционные
     parser.add_argument("first_file")
     parser.add_argument("second_file")
+    
+    # опциональные
+    parser.add_argument("-f", "--format", help="set format of output", default="JSON")
 
     args = parser.parse_args()
 
