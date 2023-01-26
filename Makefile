@@ -8,7 +8,7 @@ test:
 	poetry run pytest
 
 test-coverage:
-	poetry run pytest --gendiff --cov-report xml
+	poetry run pytest --cov-report xml
 
 
 selfcheck:
