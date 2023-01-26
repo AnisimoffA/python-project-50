@@ -6,6 +6,7 @@ authors = ["Anisimoff <happyprooo@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"}]
 
+
 [tool.poetry.dependencies]
 python = "^3.10"
 argparse = "^1.4.0"

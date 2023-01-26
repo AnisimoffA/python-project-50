@@ -33,7 +33,7 @@ def generate_diff(file1, file2):
             sort_list))
     answer_list = "\n".join(["{"] + [" ".join(x) for x in new] + ["}"])
 
-    print(answer_list)
+    return answer_list
 
 
 def main():
