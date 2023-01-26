@@ -14,9 +14,8 @@ def main():
     parser.add_argument("-f", "--format", help="set format of output", default="JSON")  # noqa: E501
 
     args = parser.parse_args()
-    
-    generate_diff(args.first_file, args.second_file)
 
+    generate_diff(args.first_file, args.second_file)
 
 
 if __name__ == "__main__":

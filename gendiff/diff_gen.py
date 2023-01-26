@@ -29,15 +29,16 @@ def generate_diff(file1, file2):
 
     sort_list = sorted(difference_list, key=lambda x: x[1])
     new = list(map(
-            lambda x: [x[0], x[1], str(x[2]).lower() if type(x[2]) == bool else str(x[2])]
-                , sort_list))
+            lambda x: [x[0], x[1], str(x[2]).lower() if type(x[2]) == bool else str(x[2])],  # noqa: E501
+            sort_list))
     answer_list = "\n".join(["{"] + [" ".join(x) for x in new] + ["}"])
-    
+
     print(answer_list)
-    
+
+
 def main():
     generate_diff("file1.json", "file2.json")
-        
+
+
 if __name__ == "__main__":
     main()
-    
