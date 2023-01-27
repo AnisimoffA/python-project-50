@@ -18,3 +18,6 @@ check: selfcheck lint test
 
 build: check
 	poetry build
+
+cc-coverage:
+	poetry run coverage xml
