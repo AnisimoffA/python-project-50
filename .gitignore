@@ -2,3 +2,5 @@ __init__.py
 .venv/
 __pycache__
 dist/
+test2.py
+test3.py

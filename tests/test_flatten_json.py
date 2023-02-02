@@ -1,13 +1,9 @@
 from gendiff import diff_gen
+from true_answers import TRUE_FLATTEN
+from gendiff.formatters import stylish
 
-def test_json():
-    answer = '''{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}'''
-    assert diff_gen.generate_diff("file1.json","file2.json") == answer
 
+def test_flatten_json():
+    needed_diff = diff_gen.generate_diff("flatten_before.json","flatten_after.json") # noqa: E501
+    stylish_diff = stylish.stylish(needed_diff)
+    assert stylish_diff == TRUE_FLATTEN
