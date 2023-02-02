@@ -8,15 +8,15 @@ def stylish(value, replacer=' ', spaces_count=4):
         if not isinstance(current_value, dict):
             return str(current_value)
 
-        deep_indent_size = depth + spaces_count
-        deep_indent = replacer * deep_indent_size
+        deep_size = depth + spaces_count
+        deep_indent = replacer * deep_size
         current_indent = replacer * depth
         lines = []
-        for key, val in current_value.items():
+        for key, v in current_value.items():
             if key[0] != "+" and key[0] != "-":
-                lines.append(f'{deep_indent}{key}: {iter_(val, deep_indent_size)}')
+                lines.append(f'{deep_indent}{key}: {iter_(v, deep_size)}')
             else:
-                lines.append(f'{deep_indent[:-2]}{key}: {iter_(val, deep_indent_size)}')
+                lines.append(f'{deep_indent[:-2]}{key}: {iter_(v, deep_size)}')
 
         result = itertools.chain("{", lines, [current_indent + "}"])
         return '\n'.join(result)

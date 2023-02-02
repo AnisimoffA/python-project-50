@@ -2,7 +2,8 @@
 import json
 from gendiff import interface
 
-def generate_diff(file1, file2):
+
+def generate_diff(file1, file2): # noqa
     file1 = json.load(open(f"tests/fixtures/{file1}"))
     file2 = json.load(open(f"tests/fixtures/{file2}"))
 
@@ -46,4 +47,3 @@ def generate_diff(file1, file2):
 
         return sort_list
     return inside_func(file1, file2)
-
