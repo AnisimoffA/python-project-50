@@ -23,7 +23,7 @@ def sort_items(items):
 
 
 def filt(z):
-    if not z:
+    if z == None: # noqa
         return "null"
     if isinstance(z, bool):
         return str(z).lower()
