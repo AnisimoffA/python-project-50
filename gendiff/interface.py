@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import yaml
+import json
+
 
 def sort_items(items):
     if len(items) == 1:
@@ -29,3 +32,12 @@ def filt(z):
         return str(z).lower()
     else:
         return z
+
+
+def file_opener(file):
+    file_form = file.split(".")[1]
+
+    if file_form == "jaml" or file_form == "jml":
+        return yaml.safe_load(open(f"tests/fixtures/{file}"))
+    else:
+        return json.load(open(f"tests/fixtures/{file}"))

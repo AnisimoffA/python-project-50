@@ -22,3 +22,7 @@ def stylish(value, replacer=' ', spaces_count=4):
         return '\n'.join(result)
 
     return iter_(value, 0)
+
+
+def lol(file):
+    return file

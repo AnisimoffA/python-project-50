@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import json
 from gendiff import interface
+from gendiff.formatters.stylish import stylish
 
 
-def generate_diff(file1, file2): # noqa
-    file1 = json.load(open(f"tests/fixtures/{file1}"))
-    file2 = json.load(open(f"tests/fixtures/{file2}"))
+def generate_diff(file1, file2, formater=stylish): # noqa
+    file1 = interface.file_opener(file1)
+    file2 = interface.file_opener(file2)
 
     def inside_func(file1, file2):
         same_items = []
@@ -46,4 +46,4 @@ def generate_diff(file1, file2): # noqa
         sort_list = interface.sort_items(union_items)
 
         return sort_list
-    return inside_func(file1, file2)
+    return formater(inside_func(file1, file2))
