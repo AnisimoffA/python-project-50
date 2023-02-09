@@ -18,14 +18,13 @@ def main():
     args = parser.parse_args()
 
     if args.format == "stylish":
-        answer = generate_diff(args.first_file, args.second_file, stylish)#. args.format)
+        answer = generate_diff(args.first_file, args.second_file, stylish)
         print(answer)
     elif args.format == "plain":
-        answer = generate_diff(args.first_file, args.second_file, plain)#. args.format)
+        answer = generate_diff(args.first_file, args.second_file, plain)
         print(answer)
     else:
         print("something went wrong")
-        
 
 
 if __name__ == "__main__":
