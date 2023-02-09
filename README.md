@@ -8,5 +8,8 @@
 Example of package job with JSON files: 
 [![asciicast](https://asciinema.org/a/fQ1JitETjm2DMiNDA0If3JG6W.svg)](https://asciinema.org/a/fQ1JitETjm2DMiNDA0If3JG6W)
 
-Example of package job with JSON files: 
+Example of package job with JAML files: 
 [![asciicast](https://asciinema.org/a/0SxxnbVHCUtQfUiOkgoXmwPoj.svg)](https://asciinema.org/a/0SxxnbVHCUtQfUiOkgoXmwPoj)
+
+Example of package job with JSON/JAML files in the plain style: 
+[![asciicast](https://asciinema.org/a/0YWJr3OhpCgoLS4jcag8rusQS.svg)](https://asciinema.org/a/0YWJr3OhpCgoLS4jcag8rusQS)
