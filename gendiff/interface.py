@@ -52,9 +52,25 @@ def find_changed_values(items):
     return answer
 
 
-def local_formater(item):
+def local_formater(item, format):
     if not isinstance(item, list):
         if item == "false" or item == "true" or item == "null":
             return item
-        return f"\'{item}\'"
+        if isinstance(item, int):
+            return item
+        return f"\'{item}\'" if format == "plain" else f"\"{item}\""
     return "[complex value]"
+
+
+def json_format_dict(items):
+    items = sorted(items, key=lambda x: x[1])
+    return {k: {"mark": mark_form(mark), "value": filt(v)}
+            if not isinstance(v, list)
+            else {"mark": mark_form(mark), "value": json_format_dict(v)}
+            for mark, k, v in items}
+
+
+def mark_form(mark):
+    if "change" in mark:
+        return mark.split("change")[1]
+    return mark

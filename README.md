@@ -13,3 +13,6 @@ Example of package job with JAML files:
 
 Example of package job with JSON/JAML files in the plain style: 
 [![asciicast](https://asciinema.org/a/0YWJr3OhpCgoLS4jcag8rusQS.svg)](https://asciinema.org/a/0YWJr3OhpCgoLS4jcag8rusQS)
+
+Example of package job with JSON/JAML files in the json style: 
+[![asciicast](https://asciinema.org/a/NDV4okTpteo3Hiqqf6ap1GpX0.svg)](https://asciinema.org/a/NDV4okTpteo3Hiqqf6ap1GpX0)

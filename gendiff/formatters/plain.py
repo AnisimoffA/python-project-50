@@ -10,7 +10,7 @@ def plain(item):  # noqa
         updated_item = find_changed_values(item)
 
         for mark, k, v in updated_item:
-            v2 = local_formater(v)
+            v2 = local_formater(v, "plain")
             if mark == "+":
                 lines.append(f"Property \'{ancestry}{k}\' was added with value: {v2}")  # noqa
             elif mark == "-":
@@ -21,8 +21,8 @@ def plain(item):  # noqa
                     lines.append(inside(v, ancestry + "."))
                     ancestry = ancestry.replace(k, "")
             else:
-                old = local_formater(v["old"])
-                new = local_formater(v["new"])
+                old = local_formater(v["old"], "plain")
+                new = local_formater(v["new"], "plain")
                 lines.append(f"Property \'{ancestry}{k}\' was updated. From {old} to {new}")  # noqa
 
         result = itertools.chain(lines)

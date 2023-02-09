@@ -1,5 +1,5 @@
 import itertools
-from gendiff.interface import to_sorted_dict
+from gendiff.interface import to_sorted_dict, mark_form
 
 
 def stylish(value, replacer=' ', spaces_count=4):  # noqa
@@ -15,9 +15,7 @@ def stylish(value, replacer=' ', spaces_count=4):  # noqa
         lines = []
         for key, v in current_value.items():
             if "change" in key:
-                key = key.split("change")[1]
-            if "change" in key:
-                key = key.split("change")[1]
+                key = mark_form(key)
             if key[0] != "+" and key[0] != "-":
                 lines.append(f'{deep_indent}{key}: {iter_(v, deep_size)}')
             else:

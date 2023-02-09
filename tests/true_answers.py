@@ -52,8 +52,10 @@ TRUE_NONFLATTEN = '''{
     }
 }'''
 
-TRUE_FLATTEN_PLAIN = '''
-tyt'''
+TRUE_FLATTEN_PLAIN = '''Property 'follow' was removed
+Property 'proxy' was removed
+Property 'timeout' was updated. From 50 to 20
+Property 'verbose' was added with value: true'''
 
 TRUE_NONFLATTEN_PLAIN = '''Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
@@ -67,3 +69,142 @@ Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]'''
 
+TRUE_NONFLATTEN_JSON_FORMAT = '''{
+    "common": {
+        "mark": "",
+        "value": {
+            "follow": {
+                "mark": "+",
+                "value": false,
+            },
+            "setting1": {
+                "mark": "",
+                "value": "Value 1",
+            },
+            "setting2": {
+                "mark": "-",
+                "value": 200,
+            },
+            "setting3": {
+                "mark": "+",
+                "value": null,
+            },
+            "setting4": {
+                "mark": "+",
+                "value": "blah blah",
+            },
+            "setting5": {
+                "mark": "+",
+                "value": {
+                    "key5": {
+                        "mark": "",
+                        "value": "value5",
+                    },
+                },
+            },
+            "setting6": {
+                "mark": "",
+                "value": {
+                    "doge": {
+                        "mark": "",
+                        "value": {
+                            "wow": {
+                                "mark": "+",
+                                "value": "so much",
+                            },
+                        },
+                    },
+                    "key": {
+                        "mark": "",
+                        "value": "value",
+                    },
+                    "ops": {
+                        "mark": "+",
+                        "value": "vops",
+                    },
+                },
+            },
+        },
+    },
+    "group1": {
+        "mark": "",
+        "value": {
+            "baz": {
+                "mark": "+",
+                "value": "bars",
+            },
+            "foo": {
+                "mark": "",
+                "value": "bar",
+            },
+            "nest": {
+                "mark": "+",
+                "value": "str",
+            },
+        },
+    },
+    "group2": {
+        "mark": "-",
+        "value": {
+            "abc": {
+                "mark": "",
+                "value": 12345,
+            },
+            "deep": {
+                "mark": "",
+                "value": {
+                    "id": {
+                        "mark": "",
+                        "value": 45,
+                    },
+                },
+            },
+        },
+    },
+    "group3": {
+        "mark": "+",
+        "value": {
+            "deep": {
+                "mark": "",
+                "value": {
+                    "id": {
+                        "mark": "",
+                        "value": {
+                            "number": {
+                                "mark": "",
+                                "value": 45,
+                            },
+                        },
+                    },
+                },
+            },
+            "fee": {
+                "mark": "",
+                "value": 100500,
+            },
+        },
+    },
+}'''
+
+TRUE_FLATTEN_JSON_FORMAT = '''{
+    "follow": {
+        "mark": "-",
+        "value": false,
+    },
+    "host": {
+        "mark": "",
+        "value": "hexlet.io",
+    },
+    "proxy": {
+        "mark": "-",
+        "value": "123.234.53.22",
+    },
+    "timeout": {
+        "mark": "+",
+        "value": 20,
+    },
+    "verbose": {
+        "mark": "+",
+        "value": true,
+    },
+}'''
