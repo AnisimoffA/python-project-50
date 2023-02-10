@@ -27,8 +27,6 @@ def main():
     elif args.format == "json_format":
         answer = generate_diff(args.first_file, args.second_file, json_format)
         print(answer)
-    else:
-        print("something went wrong")
 
 
 if __name__ == "__main__":
