@@ -4,3 +4,5 @@ dist/
 test2.py
 test3.py
 test4.py
+.DS_Store
+.vscode
