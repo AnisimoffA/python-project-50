@@ -16,9 +16,9 @@ def file_opener(file):
     file_form = file.split(".")[1]
 
     if file_form == "jaml" or file_form == "jml":
-        return yaml.safe_load(open(f"tests/fixtures/{file.split('.')[0]}.{'jaml'}"))  # noqa
+        return yaml.safe_load(open(file))  # noqa
     else:
-        return json.load(open(f"tests/fixtures/{file}"))
+        return json.load(open(file))
 
 
 def to_sorted_dict(items):
