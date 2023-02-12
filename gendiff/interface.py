@@ -15,12 +15,11 @@ def filt(z):
 def file_opener(file):
     file_form = file.split(".")[1]
     if "/" in file:
-        if "yaml" in file:
+        if "jaml" in file:
             return yaml.safe_load(open(file))
         elif "jml" in file:
             return yaml.safe_load(open(file.replace("jml", "jaml")))
-        return json.load(open(file))
-    
+        return json.safe_load(open(file))
     if file_form == "jaml" or file_form == "jml":
         return yaml.safe_load(open(f"tests/fixtures/{file.split('.')[0]}.{'jaml'}"))  # noqa
     return json.load(open(f"tests/fixtures/{file}"))
