@@ -50,5 +50,3 @@ def generate_diff(file1, file2, formater="stylish"):  # noqa
     elif formater == "plain":
         return plain(inside_func(file1, file2))
     return json_format(inside_func(file1, file2))
-
-print(generate_diff("flatten_before.json", "flatten_after.json", json_format))
