@@ -24,15 +24,15 @@ def json(value, replacer=' ', spaces_count=4):  # noqa
                 continue
             elif k == "value":
                 comma = comma_check(count, need)
-                lines.append(f'{deep_indent}"value": {iter_(meta, deep_size)}{comma}') #  noqa
+                lines.append(f'{deep_indent}"value": {iter_(meta, deep_size)}{comma}')  # noqa
                 continue
 
             if meta["mark"] != "+" and meta["mark"] != "-":
                 comma = comma_check(count, need)
-                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}') #  noqa
+                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}')  # noqa
             else:
                 comma = comma_check(count, need)
-                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}') #  noqa
+                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}')  # noqa
 
         result = itertools.chain("{", lines, [current_indent + "}"])
         return '\n'.join(result)
