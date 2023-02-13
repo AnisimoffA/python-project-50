@@ -1,0 +1,163 @@
+{
+    "common": {
+        "mark": "",
+        "value": {
+            "follow": {
+                "mark": "+",
+                "value": false,
+            },
+            "setting1": {
+                "mark": "",
+                "value": "Value 1",
+            },
+            "setting2": {
+                "mark": "-",
+                "value": 200,
+            },
+            "setting3": {
+                "mark": "+",
+                "value": {
+                    "key": {
+                        "mark": "",
+                        "value": "value",
+                    },
+                },
+            },
+            "setting4": {
+                "mark": "+",
+                "value": "blah blah",
+            },
+            "setting5": {
+                "mark": "+",
+                "value": {
+                    "key5": {
+                        "mark": "",
+                        "value": "value5",
+                    },
+                },
+            },
+            "setting6": {
+                "mark": "",
+                "value": {
+                    "doge": {
+                        "mark": "",
+                        "value": {
+                            "wow": {
+                                "mark": "+",
+                                "value": "so much",
+                            },
+                        },
+                    },
+                    "key": {
+                        "mark": "",
+                        "value": "value",
+                    },
+                    "ops": {
+                        "mark": "+",
+                        "value": "vops",
+                    },
+                },
+            },
+        },
+    },
+    "group1": {
+        "mark": "",
+        "value": {
+            "baz": {
+                "mark": "+",
+                "value": "bars",
+            },
+            "foo": {
+                "mark": "",
+                "value": "bar",
+            },
+            "nest": {
+                "mark": "+",
+                "value": "str",
+            },
+        },
+    },
+    "group2": {
+        "mark": "-",
+        "value": {
+            "abc": {
+                "mark": "",
+                "value": 12345,
+            },
+            "deep": {
+                "mark": "",
+                "value": {
+                    "id": {
+                        "mark": "",
+                        "value": 45,
+                    },
+                },
+            },
+        },
+    },
+    "group3": {
+        "mark": "+",
+        "value": {
+            "deep": {
+                "mark": "",
+                "value": {
+                    "id": {
+                        "mark": "",
+                        "value": {
+                            "number": {
+                                "mark": "",
+                                "value": 45,
+                            },
+                        },
+                    },
+                },
+            },
+            "fee": {
+                "mark": "",
+                "value": 100500,
+            },
+        },
+    },
+    "group4": {
+        "mark": "",
+        "value": {
+            "default": {
+                "mark": "+",
+                "value": "",
+            },
+            "foo": {
+                "mark": "+",
+                "value": null,
+            },
+            "isNested": {
+                "mark": "+",
+                "value": "none",
+            },
+            "key": {
+                "mark": "+",
+                "value": false,
+            },
+            "nest": {
+                "mark": "",
+                "value": {
+                    "bar": {
+                        "mark": "+",
+                        "value": 0,
+                    },
+                    "isNested": {
+                        "mark": "-",
+                        "value": true,
+                    },
+                },
+            },
+            "someKey": {
+                "mark": "+",
+                "value": true,
+            },
+            "type": {
+                "mark": "+",
+                "value": "bar",
+            },
+        },
+    },
+}

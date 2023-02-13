@@ -45,4 +45,9 @@ def generate_diff(file1, file2, formater=stylish):  # noqa
                 union_items.append(["", x, inside_func(file1[x], file2[x])])
 
         return union_items
-    return formater(inside_func(file1, file2))
+    if formater == "stylish":
+        return stylish(inside_func(file1, file2))
+    elif formater == "plain":
+        return plain(inside_func(file1, file2))
+    return json_format(inside_func(file1, file2))
+

@@ -1,0 +1,22 @@
+{
+    "follow": {
+        "mark": "-",
+        "value": false,
+    },
+    "host": {
+        "mark": "",
+        "value": "hexlet.io",
+    },
+    "proxy": {
+        "mark": "-",
+        "value": "123.234.53.22",
+    },
+    "timeout": {
+        "mark": "+",
+        "value": 20,
+    },
+    "verbose": {
+        "mark": "+",
+        "value": true,
+    },
+}
