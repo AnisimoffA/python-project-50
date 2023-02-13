@@ -13,7 +13,7 @@ def json_format(value, replacer=' ', spaces_count=4):  # noqa
         deep_indent = replacer * deep_size
         current_indent = replacer * depth
         lines = []
-        
+
         count = 0
         need = len(current_value)
         for k, meta in current_value.items():
@@ -24,19 +24,20 @@ def json_format(value, replacer=' ', spaces_count=4):  # noqa
                 continue
             elif k == "value":
                 comma = comma_check(count, need)
-                lines.append(f'{deep_indent}"value": {iter_(meta, deep_size)}{comma}')
+                lines.append(f'{deep_indent}"value": {iter_(meta, deep_size)}{comma}') #  noqa
                 continue
 
             if meta["mark"] != "+" and meta["mark"] != "-":
                 comma = comma_check(count, need)
-                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}')
+                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}') #  noqa
             else:
                 comma = comma_check(count, need)
-                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}')
+                lines.append(f'{deep_indent}"{k}": {iter_(meta, deep_size)}{comma}') #  noqa
 
         result = itertools.chain("{", lines, [current_indent + "}"])
         return '\n'.join(result)
     return iter_(value, 0)
+
 
 def comma_check(counter, predict):
     if counter == predict:
