@@ -1,7 +1,7 @@
 from gendiff.interface import file_opener
 from gendiff.formatters.stylish import stylish
 from gendiff.formatters.plain import plain  # noqa
-from gendiff.formatters.json_format import json_format  # noqa
+from gendiff.formatters.json_format import json  # noqa
 
 
 def generate_diff(file1, file2, formater="stylish"):  # noqa
@@ -49,4 +49,4 @@ def generate_diff(file1, file2, formater="stylish"):  # noqa
         return stylish(inside_func(file1, file2))
     elif formater == "plain":
         return plain(inside_func(file1, file2))
-    return json_format(inside_func(file1, file2))
+    return json(inside_func(file1, file2))

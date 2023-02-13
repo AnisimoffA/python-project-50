@@ -4,10 +4,10 @@ from gendiff import generate_diff
 params = [
     ("flatten_before.json", "flatten_after.json", "stylish", "tests/fixtures/correct_flatten_stylish.txt"),
     ("flatten_before.json", "flatten_after.json", "plain", "tests/fixtures/correct_flatten_plain.txt"),
-    ("flatten_before.json", "flatten_after.json", "json_format", "tests/fixtures/correct_flatten_json.txt"),
+    ("flatten_before.json", "flatten_after.json", "json", "tests/fixtures/correct_flatten_json.txt"),
     ("flatten_before.jaml", "flatten_after.jaml", "stylish", "tests/fixtures/correct_flatten_stylish.txt"),
     ("flatten_before.jaml", "flatten_after.jaml", "plain", "tests/fixtures/correct_flatten_plain.txt"),
-    ("flatten_before.jaml", "flatten_after.jaml", "json_format", "tests/fixtures/correct_flatten_json.txt"),
+    ("flatten_before.jaml", "flatten_after.jaml", "json", "tests/fixtures/correct_flatten_json.txt"),
     ]
 
 @pytest.mark.parametrize("file1, file2, style, result", params)

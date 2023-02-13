@@ -4,37 +4,37 @@
         "value": {
             "follow": {
                 "mark": "+",
-                "value": false,
+                "value": false
             },
             "setting1": {
                 "mark": "",
-                "value": "Value 1",
+                "value": "Value 1"
             },
             "setting2": {
                 "mark": "-",
-                "value": 200,
+                "value": 200
             },
             "setting3": {
                 "mark": "+",
                 "value": {
                     "key": {
                         "mark": "",
-                        "value": "value",
-                    },
-                },
+                        "value": "value"
+                    }
+                }
             },
             "setting4": {
                 "mark": "+",
-                "value": "blah blah",
+                "value": "blah blah"
             },
             "setting5": {
                 "mark": "+",
                 "value": {
                     "key5": {
                         "mark": "",
-                        "value": "value5",
-                    },
-                },
+                        "value": "value5"
+                    }
+                }
             },
             "setting6": {
                 "mark": "",
@@ -44,56 +44,56 @@
                         "value": {
                             "wow": {
                                 "mark": "+",
-                                "value": "so much",
-                            },
-                        },
+                                "value": "so much"
+                            }
+                        }
                     },
                     "key": {
                         "mark": "",
-                        "value": "value",
+                        "value": "value"
                     },
                     "ops": {
                         "mark": "+",
-                        "value": "vops",
-                    },
-                },
-            },
-        },
+                        "value": "vops"
+                    }
+                }
+            }
+        }
     },
     "group1": {
         "mark": "",
         "value": {
             "baz": {
                 "mark": "+",
-                "value": "bars",
+                "value": "bars"
             },
             "foo": {
                 "mark": "",
-                "value": "bar",
+                "value": "bar"
             },
             "nest": {
                 "mark": "+",
-                "value": "str",
-            },
-        },
+                "value": "str"
+            }
+        }
     },
     "group2": {
         "mark": "-",
         "value": {
             "abc": {
                 "mark": "",
-                "value": 12345,
+                "value": 12345
             },
             "deep": {
                 "mark": "",
                 "value": {
                     "id": {
                         "mark": "",
-                        "value": 45,
-                    },
-                },
-            },
-        },
+                        "value": 45
+                    }
+                }
+            }
+        }
     },
     "group3": {
         "mark": "+",
@@ -106,58 +106,58 @@
                         "value": {
                             "number": {
                                 "mark": "",
-                                "value": 45,
-                            },
-                        },
-                    },
-                },
+                                "value": 45
+                            }
+                        }
+                    }
+                }
             },
             "fee": {
                 "mark": "",
-                "value": 100500,
-            },
-        },
+                "value": 100500
+            }
+        }
     },
     "group4": {
         "mark": "",
         "value": {
             "default": {
                 "mark": "+",
-                "value": "",
+                "value": ""
             },
             "foo": {
                 "mark": "+",
-                "value": null,
+                "value": null
             },
             "isNested": {
                 "mark": "+",
-                "value": "none",
+                "value": "none"
             },
             "key": {
                 "mark": "+",
-                "value": false,
+                "value": false
             },
             "nest": {
                 "mark": "",
                 "value": {
                     "bar": {
                         "mark": "+",
-                        "value": 0,
+                        "value": 0
                     },
                     "isNested": {
                         "mark": "-",
-                        "value": true,
-                    },
-                },
+                        "value": true
+                    }
+                }
             },
             "someKey": {
                 "mark": "+",
-                "value": true,
+                "value": true
             },
             "type": {
                 "mark": "+",
-                "value": "bar",
-            },
-        },
-    },
+                "value": "bar"
+            }
+        }
+    }
 }

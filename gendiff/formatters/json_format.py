@@ -2,7 +2,7 @@ from gendiff.interface import local_formater, json_format_dict
 import itertools
 
 
-def json_format(value, replacer=' ', spaces_count=4):  # noqa
+def json(value, replacer=' ', spaces_count=4):  # noqa
     value = json_format_dict(value)
 
     def iter_(current_value, depth):
