@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 import argparse
 from gendiff.diff_gen import generate_diff
-from gendiff.formatters.stylish import stylish
-from gendiff.formatters.plain import plain
-from gendiff.formatters.json_format import json_format
 
 
 def main():
@@ -19,13 +16,13 @@ def main():
     args = parser.parse_args()
 
     if args.format == "stylish":
-        answer = generate_diff(args.first_file, args.second_file, stylish)
+        answer = generate_diff(args.first_file, args.second_file, "stylish")
         print(answer)
     elif args.format == "plain":
-        answer = generate_diff(args.first_file, args.second_file, plain)
+        answer = generate_diff(args.first_file, args.second_file, "plain")
         print(answer)
     elif args.format == "json_format":
-        answer = generate_diff(args.first_file, args.second_file, json_format)
+        answer = generate_diff(args.first_file, args.second_file, "json_format")
         print(answer)
 
 
