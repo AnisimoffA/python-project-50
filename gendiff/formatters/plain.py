@@ -1,30 +1,26 @@
+from gendiff.interface import local_formater
 import itertools
-from gendiff.interface import to_sorted_list, find_changed_values, local_formater  # noqa
 
 
 def plain(item):  # noqa
-    item = to_sorted_list(item)
-
     def inside(item, ancestry):
         lines = []
-        updated_item = find_changed_values(item)
 
-        for mark, k, v in updated_item:
-            v2 = local_formater(v, "plain")
-            if mark == "+":
-                lines.append(f"Property \'{ancestry}{k}\' was added with value: {v2}")  # noqa
-            elif mark == "-":
-                lines.append(f"Property \'{ancestry}{k}\' was removed")
-            elif mark == "":
-                if isinstance(v, list):
-                    ancestry += k
-                    lines.append(inside(v, ancestry + "."))
-                    ancestry = ancestry.replace(k, "")
-            else:
-                old = local_formater(v["old"], "plain")
-                new = local_formater(v["new"], "plain")
+        for k, v in item.items():
+            if v["status"] == "changed":
+                old = local_formater(v["old_value"], "plain")
+                new = local_formater(v["new_value"], "plain")
                 lines.append(f"Property \'{ancestry}{k}\' was updated. From {old} to {new}")  # noqa
-
+            elif v["status"] == "added":
+                v2 = local_formater(v['changes'], "plain")
+                lines.append(f"Property \'{ancestry}{k}\' was added with value: {v2}")  # noqa
+            elif v["status"] == "removed":
+                lines.append(f"Property \'{ancestry}{k}\' was removed")
+            elif v["status"] == "nested" or v["status"] == "same":
+                if isinstance(v['changes'], dict):
+                    ancestry += k
+                    lines.append(inside(v['changes'], ancestry + "."))
+                    ancestry = ancestry.replace(k, "")
         result = itertools.chain(lines)
         return "\n".join(result)
     return inside(item, "")

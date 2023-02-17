@@ -1,22 +1,23 @@
 {
     "follow": {
-        "mark": "-",
-        "value": false
+        "changes": "false",
+        "status": "removed"
     },
     "host": {
-        "mark": "",
-        "value": "hexlet.io"
+        "changes": "hexlet.io",
+        "status": "same"
     },
     "proxy": {
-        "mark": "-",
-        "value": "123.234.53.22"
+        "changes": "123.234.53.22",
+        "status": "removed"
     },
     "timeout": {
-        "mark": "+",
-        "value": 20
+        "status": "changed",
+        "old_value": 50,
+        "new_value": 20
     },
     "verbose": {
-        "mark": "+",
-        "value": true
+        "changes": "true",
+        "status": "added"
     }
 }
