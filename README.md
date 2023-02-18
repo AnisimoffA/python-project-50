@@ -1,4 +1,5 @@
 [![Actions Status](https://github.com/AnisimoffA/python-project-50/workflows/hexlet-check/badge.svg)](https://github.com/AnisimoffA/python-project-50/actions)
+[![Actions Status](https://github.com/AnisimoffA/python-project-50/workflows/my_personal_actions/badge.svg)](https://github.com/AnisimoffA/python-project-50/actions)
 <a href="https://codeclimate.com/github/AnisimoffA/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/feb3e3685140c80999d4/maintainability" /></a>
 [![Test Coverage](https://api.codeclimate.com/v1/badges/feb3e3685140c80999d4/test_coverage)](https://codeclimate.com/github/AnisimoffA/python-project-50/test_coverage)
 
