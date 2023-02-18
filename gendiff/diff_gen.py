@@ -20,14 +20,10 @@ def generate_diff(file1, file2, formater="stylish"):
 
 
 def finder_logic(file1, file2):
-    same = seacher(file1, file2, "same_file")
-    only1 = seacher(file1, file2, "only1_file")
-    only2 = seacher(file1, file2, "only2_file")
-
     folder = {}
-    folder.update(same)
-    folder.update(only1)
-    folder.update(only2)
+    folder.update(seacher(file1, file2, "same_file"))
+    folder.update(seacher(file1, file2, "only1_file"))
+    folder.update(seacher(file1, file2, "only2_file"))
 
     folder_names = set(list(map(lambda x: x, folder)))
     same_keys_diff_vals = set(file1).union(set(file2)) - folder_names
@@ -46,17 +42,15 @@ def finder_logic(file1, file2):
 
 def seacher(file1, file2, condition):  # noqa
     answer = {}
-    set_file1 = set(file1)
-    set_file2 = set(file2)
 
     if condition == "same_file":
-        items = list(filter(lambda x: file1[x] == file2[x], set_file1 & set_file2))  # noqa
+        items = list(filter(lambda x: file1[x] == file2[x], set(file1) & set(file2)))  # noqa
         status = "same"
     elif condition == "only1_file":
-        items = set_file1 - set_file2
+        items = set(file1) - set(file2)
         status = "removed"
     elif condition == "only2_file":
-        items = set_file2 - set_file1
+        items = set(file2) - set(file1)
         status = "added"
 
     for x in items:
@@ -74,3 +68,5 @@ def seacher(file1, file2, condition):  # noqa
             answer.update(info)
 
     return answer
+
+print(generate_diff("nonflatten_before.json", "nonflatten_after.json", "stylish"))
