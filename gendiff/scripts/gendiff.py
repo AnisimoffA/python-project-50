@@ -11,10 +11,11 @@ def main():
     parser.add_argument("second_file")
 
     # опциональные
-    parser.add_argument("-f", "--format", help="set format of output", default="stylish")  # noqa: E501
+    parser.add_argument("-f", "--format",
+                        help="set format of output",
+                        default="stylish")
 
     args = parser.parse_args()
-
     answer = generate_diff(args.first_file, args.second_file, args.format)
     print(answer)
 

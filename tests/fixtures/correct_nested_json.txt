@@ -1,35 +1,44 @@
 {
     "common": {
+        "key": "common",
         "changes": {
             "follow": {
+                "key": "follow",
                 "changes": "false",
                 "status": "added"
             },
             "setting1": {
+                "key": "setting1",
                 "changes": "Value 1",
                 "status": "same"
             },
             "setting2": {
+                "key": "setting2",
                 "changes": 200,
                 "status": "removed"
             },
             "setting3": {
+                "key": "setting3",
                 "status": "changed",
                 "old_value": "true",
                 "new_value": {
                     "key": {
+                        "key": "key",
                         "changes": "value",
                         "status": "same"
                     }
                 }
             },
             "setting4": {
+                "key": "setting4",
                 "changes": "blah blah",
                 "status": "added"
             },
             "setting5": {
+                "key": "setting5",
                 "changes": {
                     "key5": {
+                        "key": "key5",
                         "changes": "value5",
                         "status": "same"
                     }
@@ -37,10 +46,13 @@
                 "status": "added"
             },
             "setting6": {
+                "key": "setting6",
                 "changes": {
                     "doge": {
+                        "key": "doge",
                         "changes": {
                             "wow": {
+                                "key": "wow",
                                 "status": "changed",
                                 "old_value": "too much",
                                 "new_value": "so much"
@@ -49,10 +61,12 @@
                         "status": "nested"
                     },
                     "key": {
+                        "key": "key",
                         "changes": "value",
                         "status": "same"
                     },
                     "ops": {
+                        "key": "ops",
                         "changes": "vops",
                         "status": "added"
                     }
@@ -63,20 +77,25 @@
         "status": "nested"
     },
     "group1": {
+        "key": "group1",
         "changes": {
             "baz": {
+                "key": "baz",
                 "status": "changed",
                 "old_value": "bas",
                 "new_value": "bars"
             },
             "foo": {
+                "key": "foo",
                 "changes": "bar",
                 "status": "same"
             },
             "nest": {
+                "key": "nest",
                 "status": "changed",
                 "old_value": {
                     "key": {
+                        "key": "key",
                         "changes": "value",
                         "status": "same"
                     }
@@ -87,14 +106,18 @@
         "status": "nested"
     },
     "group2": {
+        "key": "group2",
         "changes": {
             "abc": {
+                "key": "abc",
                 "changes": 12345,
                 "status": "same"
             },
             "deep": {
+                "key": "deep",
                 "changes": {
                     "id": {
+                        "key": "id",
                         "changes": 45,
                         "status": "same"
                     }
@@ -105,12 +128,16 @@
         "status": "removed"
     },
     "group3": {
+        "key": "group3",
         "changes": {
             "deep": {
+                "key": "deep",
                 "changes": {
                     "id": {
+                        "key": "id",
                         "changes": {
                             "number": {
+                                "key": "number",
                                 "changes": 45,
                                 "status": "same"
                             }
@@ -121,6 +148,7 @@
                 "status": "same"
             },
             "fee": {
+                "key": "fee",
                 "changes": 100500,
                 "status": "same"
             }
@@ -128,34 +156,42 @@
         "status": "added"
     },
     "group4": {
+        "key": "group4",
         "changes": {
             "default": {
+                "key": "default",
                 "status": "changed",
                 "old_value": "null",
                 "new_value": ""
             },
             "foo": {
+                "key": "foo",
                 "status": "changed",
                 "old_value": 0,
                 "new_value": "null"
             },
             "isNested": {
+                "key": "isNested",
                 "status": "changed",
                 "old_value": "false",
                 "new_value": "none"
             },
             "key": {
+                "key": "key",
                 "changes": "false",
                 "status": "added"
             },
             "nest": {
+                "key": "nest",
                 "changes": {
                     "bar": {
+                        "key": "bar",
                         "status": "changed",
                         "old_value": "",
                         "new_value": 0
                     },
                     "isNested": {
+                        "key": "isNested",
                         "changes": "true",
                         "status": "removed"
                     }
@@ -163,10 +199,12 @@
                 "status": "nested"
             },
             "someKey": {
+                "key": "someKey",
                 "changes": "true",
                 "status": "added"
             },
             "type": {
+                "key": "type",
                 "status": "changed",
                 "old_value": "bas",
                 "new_value": "bar"
