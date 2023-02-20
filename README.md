@@ -17,7 +17,17 @@ Supported output formats:
 - intuitive text
 - plain format
 - JSON format 
-  
+## Requirements
+___
+python ^3.10
+
+pip ^23.0
+## How to install?
+___
+To install utility, you should call this command:
+```python
+python3 -m pip install --user git+https://github.com/AnisimoffA/python-project-50.git
+```
 ## How to use?
 ___
  
