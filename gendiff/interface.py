@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import yaml
+import json
 
 
 def filt(z):
@@ -11,21 +13,12 @@ def filt(z):
         return z
 
 
-def none_to_null_filt(item):
-    for v in item.values():
-        if v["status"] == "changed":
-            if isinstance(v["old_value"], dict):
-                none_to_null_filt(v["old_value"])
-            else:
-                v["old_value"] = filt(v["old_value"])
-            if isinstance(v["new_value"], dict):
-                none_to_null_filt(v["new_value"])
-            else:
-                v["new_value"] = filt(v["new_value"])
+def none_to_null(item):
+    for k, v in item.items():
+        if isinstance(v, dict):
+            none_to_null(v)
         else:
-            if isinstance(v["changes"], dict):
-                none_to_null_filt(v["changes"])
-            v["changes"] = filt(v["changes"])
+            item[k] = filt(v)
     return item
 
 
@@ -56,9 +49,5 @@ def local_formater(item, format):
     return "[complex value]"
 
 
-def mkfile(name, data=[], status=''):
-    return {name: {'key': name, 'changes': data, 'status': status}}
-
-
-def mk_sorted_file(name, status='changed', old_value={}, new_value={}):
-    return {name: {'key': name, 'status': status, "old_value": old_value, "new_value": new_value}}  # noqa E501
+def parser(data, format):
+    return yaml.safe_load(data) if format == "yaml" else json.load(data)
