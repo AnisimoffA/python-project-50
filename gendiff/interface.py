@@ -4,24 +4,6 @@ import yaml
 import json
 
 
-def filt(z):
-    if z is None:
-        return "null"
-    if isinstance(z, bool):
-        return str(z).lower()
-    else:
-        return z
-
-
-def none_to_null(item):
-    for k, v in item.items():
-        if isinstance(v, dict):
-            none_to_null(v)
-        else:
-            item[k] = filt(v)
-    return item
-
-
 def file_opener(file):
     file_format = file.split(".")[1]
 
@@ -39,15 +21,9 @@ def file_opener(file):
     return data, file_format
 
 
-def local_formater(item, format):
-    if not isinstance(item, dict):
-        if item == "false" or item == "true" or item == "null":
-            return item
-        if isinstance(item, int):
-            return item
-        return f"\'{item}\'" if format == "plain" else f"\"{item}\""
-    return "[complex value]"
-
-
 def parser(data, format):
-    return yaml.safe_load(data) if format == "yaml" else json.load(data)
+    if format == "yaml":
+        return yaml.safe_load(data)
+    elif format == "json":
+        return json.load(data)
+    return "incorrect format"

@@ -1,6 +1,6 @@
 import itertools
 
-def stylish(value, replacer=' ', spaces_count=4):  # noqa C901
+def to_stylish(value, replacer=' ', spaces_count=4):  # noqa C901
 
     def iter_(current_value, depth):
         deep_size = depth + spaces_count
@@ -9,22 +9,22 @@ def stylish(value, replacer=' ', spaces_count=4):  # noqa C901
         lines = []
 
         if isinstance(current_value, dict):
-            for k, v in current_value.items():
-                lines.append(f'{deep_indent}{k}: {iter_(v, deep_size)}')
+            for key, value in current_value.items():
+                lines.append(f'{deep_indent}{key}: {iter_(value, deep_size)}')
 
         if not isinstance(current_value, list) and not isinstance(current_value, dict):  # noqa E501
             return str(current_value)
 
         if isinstance(current_value, list):
-            for v in current_value:
-                if v["status"] == "changed":
-                    lines.append(f'{deep_indent[:-2]}- {v["key"]}: {iter_((v["old_value"]), deep_size)}')  # noqa E501
-                    lines.append(f'{deep_indent[:-2]}+ {v["key"]}: {iter_((v["new_value"]), deep_size)}')  # noqa E501
-                if v["status"] == "nested" or v["status"] == "same":
-                    lines.append(f'{deep_indent}{v["key"]}: {iter_(v["changes"], deep_size)}')  # noqa E501
-                if v["status"] == "added" or v["status"] == "removed":
-                    mark = "+" if v["status"] == "added" else "-"
-                    lines.append(f'{deep_indent[:-2]}{mark} {v["key"]}: {iter_(v["changes"], deep_size)}')  # noqa E501
+            for value in current_value:
+                if value["status"] == "changed":
+                    lines.append(f'{deep_indent[:-2]}- {value["key"]}: {iter_((value["old_value"]), deep_size)}')  # noqa E501
+                    lines.append(f'{deep_indent[:-2]}+ {value["key"]}: {iter_((value["new_value"]), deep_size)}')  # noqa E501
+                if value["status"] == "nested" or value["status"] == "same":
+                    lines.append(f'{deep_indent}{value["key"]}: {iter_(value["changes"], deep_size)}')  # noqa E501
+                if value["status"] == "added" or value["status"] == "removed":
+                    mark = "+" if value["status"] == "added" else "-"
+                    lines.append(f'{deep_indent[:-2]}{mark} {value["key"]}: {iter_(value["changes"], deep_size)}')  # noqa E501
 
         result = itertools.chain("{", lines, [current_indent + "}"])
         return '\n'.join(result)
