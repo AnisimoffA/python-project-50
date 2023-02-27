@@ -1,13 +1,14 @@
 import itertools
+from gendiff.interface import none_to_null
+
 
 def to_stylish(value, replacer=' ', spaces_count=4):  # noqa C901
-
+    value = none_to_null(value)
     def iter_(current_value, depth):
         deep_size = depth + spaces_count
         deep_indent = replacer * deep_size
         current_indent = replacer * depth
         lines = []
-
         if isinstance(current_value, dict):
             for key, value in current_value.items():
                 lines.append(f'{deep_indent}{key}: {iter_(value, deep_size)}')

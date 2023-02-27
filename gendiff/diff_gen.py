@@ -16,52 +16,31 @@ def generate_diff(file1, file2, formater="stylish"):
 def finder_logic(file1, file2):
 
     answer = []
-    for x in sorted(set(file1).union(set(file2))):
-        if x in file1 and x not in file2:
-            info = {"key": x, "changes": file1[x], "status": "removed"}
-        elif x in file2 and x not in file1:
-            info = {"key": x, "changes": file2[x], "status": "added"}
-        else:
-            if file1[x] != file2[x]:
-                if isinstance(file1[x], dict) and isinstance(file2[x], dict):
-                    info = {"key": x, "changes": finder_logic(file1[x], file2[x]), "status": "nested"}  # noqa E501
-                else:
-                    info = {'key': x, 'status': "changed", "old_value": file1[x], "new_value": file2[x]}  # noqa E501
+    for item in sorted(set(file1).union(set(file2))):
+        if item in file1 and item not in file2:
+            info = {"key": item, "changes": file1[item], "status": "removed"}
+        elif item in file2 and item not in file1:
+            info = {"key": item, "changes": file2[item], "status": "added"}
+        elif file1[item] != file2[item]:
+            if isinstance(file1[item], dict) and isinstance(file2[item], dict):
+                info = {"key": item, "changes": finder_logic(file1[item], file2[item]), "status": "nested"}  # noqa E501
             else:
-                info = {"key": x, "changes": file1[x], "status": "same"}
+                info = {'key': item, 'status': "changed", "old_value": file1[item], "new_value": file2[item]}  # noqa E501
+        else:
+            info = {"key": item, "changes": file1[item], "status": "same"}
         answer.append(info)
     return answer
 
 
 def format(file1, file2, needed_format):
     if needed_format == "stylish":
-        file1 = none_to_null(file1)
-        file2 = none_to_null(file2)
+
         return to_stylish(finder_logic(file1, file2))
     elif needed_format == "plain":
-        file1 = none_to_null(file1)
-        file2 = none_to_null(file2)
+
         return to_plain(finder_logic(file1, file2))
     elif needed_format == "json":
-        file1 = none_to_null(file1)
-        file2 = none_to_null(file2)
+
         return to_json(finder_logic(file1, file2))
     return "unsupported format!"
 
-
-def filt(item):
-    if item is None:
-        return "null"
-    if isinstance(item, bool):
-        return str(item).lower()
-    else:
-        return item
-
-
-def none_to_null(item):
-    for key, value in item.items():
-        if isinstance(value, dict):
-            none_to_null(value)
-        else:
-            item[key] = filt(value)
-    return item
