@@ -10,9 +10,11 @@ def file_opener(file):
 
     if file_format == 'json':
         data = open(file)
-    elif file_format == 'yaml' or file_format == 'yml':
-        file_format = 'yaml'
+    elif file_format == 'yaml':
         data = Path(file).read_text()
+    elif file_format == 'yml':
+        file_format = 'yaml'
+        data = Path(file_name + "." + file_format).read_text()
     return data, file_format
 
 
