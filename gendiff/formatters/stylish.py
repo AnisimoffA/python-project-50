@@ -2,31 +2,50 @@ import itertools
 from gendiff.interface import none_to_null
 
 
-def to_stylish(value, replacer=' ', spaces_count=4):  # noqa C901
+def to_stylish(value, replacer='    ', depth=1):
     value = none_to_null(value)
+
     def iter_(current_value, depth):
-        deep_size = depth + spaces_count
-        deep_indent = replacer * deep_size
-        current_indent = replacer * depth
+        new_depth = depth + 1
+        actual_space = replacer * depth
+        space_for_last_string = (depth-1) * replacer
         lines = []
-        if isinstance(current_value, dict):
-            for key, value in current_value.items():
-                lines.append(f'{deep_indent}{key}: {iter_(value, deep_size)}')
 
-        if not isinstance(current_value, list) and not isinstance(current_value, dict):  # noqa E501
-            return str(current_value)
+        for value in current_value:
+            if value["status"] == "changed":
+                format_old = formatted_value(value.get('old_value'), new_depth)
+                format_new = formatted_value(value.get('new_value'), new_depth)
+                lines.append(f"{actual_space[:-2]}- {value['key']}: {format_old}")
+                lines.append(f"{actual_space[:-2]}+ {value['key']}: {format_new}")
 
-        if isinstance(current_value, list):
-            for value in current_value:
-                if value["status"] == "changed":
-                    lines.append(f'{deep_indent[:-2]}- {value["key"]}: {iter_((value["old_value"]), deep_size)}')  # noqa E501
-                    lines.append(f'{deep_indent[:-2]}+ {value["key"]}: {iter_((value["new_value"]), deep_size)}')  # noqa E501
-                if value["status"] == "nested" or value["status"] == "same":
-                    lines.append(f'{deep_indent}{value["key"]}: {iter_(value["changes"], deep_size)}')  # noqa E501
-                if value["status"] == "added" or value["status"] == "removed":
-                    mark = "+" if value["status"] == "added" else "-"
-                    lines.append(f'{deep_indent[:-2]}{mark} {value["key"]}: {iter_(value["changes"], deep_size)}')  # noqa E501
+            if value["status"] == "nested":
+                lines.append(f"{actual_space}{value['key']}: {formatted_value(value.get('changes'), new_depth)}")
 
-        result = itertools.chain("{", lines, [current_indent + "}"])
+            if value["status"] == "same":
+                lines.append(f"{actual_space}{value['key']}: {formatted_value(value.get('changes'), new_depth)}")
+
+            if value["status"] == "added" or value["status"] == "removed":
+                mark = "+" if value["status"] == "added" else "-"
+                format_value = formatted_value(value.get('changes'), new_depth)
+                lines.append(f"{actual_space[:-2]}{mark} {value['key']}: {format_value}")
+
+        result = itertools.chain("{", lines, [space_for_last_string + "}"])
         return '\n'.join(result)
-    return iter_(value, 0)
+    return iter_(value, depth)
+
+
+def formatted_value(data, depth):
+    replacer = '    '
+    actual_space = replacer * depth
+    space_for_last_string = (depth-1) * replacer
+    lines = []
+
+    if isinstance(data, int) or isinstance(data, str):
+        return data
+    if isinstance(data, dict):
+        for key, val in data.items():
+            lines.append(f'{actual_space}{key}: {formatted_value(val, depth+1)}')
+        result = itertools.chain("{", lines, [space_for_last_string + "}"])
+        return '\n'.join(result)
+    if isinstance(data, list):
+        return to_stylish(data, depth=depth)

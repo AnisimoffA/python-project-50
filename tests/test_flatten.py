@@ -2,8 +2,8 @@ import pytest
 from gendiff import generate_diff
 
 
-json_files = ("flatt_before.json", "flatt_after.json")
-yaml_files = ("flatt_before.yaml", "flatt_after.yaml")
+json_files = ("tests/fixtures/flatt_before.json", "tests/fixtures/flatt_after.json") # noqa E501
+yaml_files = ("tests/fixtures/flatt_before.yaml", "tests/fixtures/flatt_after.yaml") # noqa E501
 
 params = [
     (json_files, "stylish", "tests/fixtures/correct_flatt_stylish.txt"),

@@ -3,32 +3,16 @@ from pathlib import Path
 import yaml
 import json
 
-#--------------old version----------------
 
-# def file_opener(file):
-#     file_format = file.split(".")[1]
-
-#     if file_format == 'json':
-#         if "/" in file:
-#             data = open(file)
-#         else:
-#             data = open(f"tests/fixtures/{file}")
-#     elif file_format == 'yml' or file_format == 'yaml':
-#         if "/" in file:
-#             data = Path(file).read_text()
-#         else:
-#             data = Path(f"tests/fixtures/{file.split('.')[0]}.{'yaml'}").read_text()  # noqa E501
-#         file_format = "yaml"
-#     return data, file_format
-
-#--------------new version----------------
 def file_opener(file):
+    file_name = file.split(".")[0]
     file_format = file.split(".")[1]
 
     if file_format == 'json':
         data = open(file)
-    elif file_format == 'yml' or file_format == 'yaml':
-        data = Path(file).read_text()
+    elif file_format == 'yaml' or file_format == 'yml':
+        file_format = 'yaml'
+        data = Path(file_name + "." + file_format).read_text()
     return data, file_format
 
 
@@ -40,16 +24,15 @@ def parser(data, format):
     return "incorrect format"
 
 
-def none_to_null(item):
+def none_to_null(item): # noqa C901
     if item is None:
         return "null"
     elif isinstance(item, bool):
         return str(item).lower()
     elif isinstance(item, dict):
-        for _, v in item.items():
+        for v in item.values():
             none_to_null(v)
     elif isinstance(item, list):
-    
         for x in item:
             if x["status"] == "changed":
                 x["old_value"] = none_to_null(x["old_value"])

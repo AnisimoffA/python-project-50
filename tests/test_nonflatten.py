@@ -2,8 +2,8 @@ import pytest
 from gendiff import generate_diff
 
 
-json_files = ("nested_before.json", "nested_after.json")
-yaml_files = ("nested_before.yml", "nested_after.yml")
+json_files = ("tests/fixtures/nested_before.json", "tests/fixtures/nested_after.json") # noqa E501
+yaml_files = ("tests/fixtures/nested_before.yml", "tests/fixtures/nested_after.yml") # noqa E501
 
 params = [
     (json_files, "stylish", "tests/fixtures/correct_nested_stylish.txt"),

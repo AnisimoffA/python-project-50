@@ -18,29 +18,25 @@ def finder_logic(file1, file2):
     answer = []
     for item in sorted(set(file1).union(set(file2))):
         if item in file1 and item not in file2:
-            info = {"key": item, "changes": file1[item], "status": "removed"}
+            info = {"key": item, "status": "removed", "changes": file1[item]}
         elif item in file2 and item not in file1:
-            info = {"key": item, "changes": file2[item], "status": "added"}
+            info = {"key": item, "status": "added", "changes": file2[item]}
         elif file1[item] != file2[item]:
             if isinstance(file1[item], dict) and isinstance(file2[item], dict):
-                info = {"key": item, "changes": finder_logic(file1[item], file2[item]), "status": "nested"}  # noqa E501
+                info = {"key": item, "status": "nested", "changes": finder_logic(file1[item], file2[item])}  # noqa E501
             else:
                 info = {'key': item, 'status': "changed", "old_value": file1[item], "new_value": file2[item]}  # noqa E501
         else:
-            info = {"key": item, "changes": file1[item], "status": "same"}
+            info = {"key": item, "status": "same", "changes": file1[item]}
         answer.append(info)
     return answer
 
 
 def format(file1, file2, needed_format):
     if needed_format == "stylish":
-
         return to_stylish(finder_logic(file1, file2))
     elif needed_format == "plain":
-
         return to_plain(finder_logic(file1, file2))
     elif needed_format == "json":
-
         return to_json(finder_logic(file1, file2))
     return "unsupported format!"
-

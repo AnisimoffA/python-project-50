@@ -1,21 +1,22 @@
 [
     {
         "key": "common",
+        "status": "nested",
         "changes": [
             {
                 "key": "follow",
-                "changes": "false",
-                "status": "added"
+                "status": "added",
+                "changes": "false"
             },
             {
                 "key": "setting1",
-                "changes": "Value 1",
-                "status": "same"
+                "status": "same",
+                "changes": "Value 1"
             },
             {
                 "key": "setting2",
-                "changes": 200,
-                "status": "removed"
+                "status": "removed",
+                "changes": 200
             },
             {
                 "key": "setting3",
@@ -27,21 +28,23 @@
             },
             {
                 "key": "setting4",
-                "changes": "blah blah",
-                "status": "added"
+                "status": "added",
+                "changes": "blah blah"
             },
             {
                 "key": "setting5",
+                "status": "added",
                 "changes": {
                     "key5": "value5"
-                },
-                "status": "added"
+                }
             },
             {
                 "key": "setting6",
+                "status": "nested",
                 "changes": [
                     {
                         "key": "doge",
+                        "status": "nested",
                         "changes": [
                             {
                                 "key": "wow",
@@ -49,27 +52,25 @@
                                 "old_value": "too much",
                                 "new_value": "so much"
                             }
-                        ],
-                        "status": "nested"
+                        ]
                     },
                     {
                         "key": "key",
-                        "changes": "value",
-                        "status": "same"
+                        "status": "same",
+                        "changes": "value"
                     },
                     {
                         "key": "ops",
-                        "changes": "vops",
-                        "status": "added"
+                        "status": "added",
+                        "changes": "vops"
                     }
-                ],
-                "status": "nested"
+                ]
             }
-        ],
-        "status": "nested"
+        ]
     },
     {
         "key": "group1",
+        "status": "nested",
         "changes": [
             {
                 "key": "baz",
@@ -79,8 +80,8 @@
             },
             {
                 "key": "foo",
-                "changes": "bar",
-                "status": "same"
+                "status": "same",
+                "changes": "bar"
             },
             {
                 "key": "nest",
@@ -90,21 +91,21 @@
                 },
                 "new_value": "str"
             }
-        ],
-        "status": "nested"
+        ]
     },
     {
         "key": "group2",
+        "status": "removed",
         "changes": {
             "abc": 12345,
             "deep": {
                 "id": 45
             }
-        },
-        "status": "removed"
+        }
     },
     {
         "key": "group3",
+        "status": "added",
         "changes": {
             "deep": {
                 "id": {
@@ -112,11 +113,11 @@
                 }
             },
             "fee": 100500
-        },
-        "status": "added"
+        }
     },
     {
         "key": "group4",
+        "status": "nested",
         "changes": [
             {
                 "key": "default",
@@ -138,11 +139,12 @@
             },
             {
                 "key": "key",
-                "changes": "false",
-                "status": "added"
+                "status": "added",
+                "changes": "false"
             },
             {
                 "key": "nest",
+                "status": "nested",
                 "changes": [
                     {
                         "key": "bar",
@@ -152,16 +154,15 @@
                     },
                     {
                         "key": "isNested",
-                        "changes": "true",
-                        "status": "removed"
+                        "status": "removed",
+                        "changes": "true"
                     }
-                ],
-                "status": "nested"
+                ]
             },
             {
                 "key": "someKey",
-                "changes": "true",
-                "status": "added"
+                "status": "added",
+                "changes": "true"
             },
             {
                 "key": "type",
@@ -169,7 +170,6 @@
                 "old_value": "bas",
                 "new_value": "bar"
             }
-        ],
-        "status": "nested"
+        ]
     }
 ]

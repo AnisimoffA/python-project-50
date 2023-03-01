@@ -1,8 +1,9 @@
-import itertools
 from gendiff.interface import none_to_null
+
 
 def to_plain(item):  # noqa C901
     item = none_to_null(item)
+
     def inside(item, ancestry):
         lines = []
 
