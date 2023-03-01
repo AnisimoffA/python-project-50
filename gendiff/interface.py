@@ -5,7 +5,6 @@ import json
 
 
 def file_opener(file):
-    file_name = file.split(".")[0]
     file_format = file.split(".")[1]
 
     if file_format == 'json':
@@ -14,6 +13,7 @@ def file_opener(file):
         data = Path(file).read_text()
     elif file_format == 'yml':
         file_format = 'yaml'
+        file_name = file.split(".")[0]
         data = Path(file_name + "." + file_format).read_text()
     return data, file_format
 
