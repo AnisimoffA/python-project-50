@@ -18,16 +18,14 @@ def to_stylish(value, replacer='    ', depth=1):  # noqa C901
                 lines.append(f"{space[:-2]}- {value['key']}: {format_old}")
                 lines.append(f"{space[:-2]}+ {value['key']}: {format_new}")
 
-            if value["status"] == "nested":
-                lines.append(f"{space}{value['key']}: {formatted_value(value.get('changes'), new_depth)}")  # noqa E501
-
-            if value["status"] == "same":
-                lines.append(f"{space}{value['key']}: {formatted_value(value.get('changes'), new_depth)}")  # noqa E501
+            if value["status"] == "nested" or value["status"] == "same":
+                new_data = formatted_value(value.get('changes'), new_depth)
+                lines.append(f"{space}{value['key']}: {new_data}")
 
             if value["status"] == "added" or value["status"] == "removed":
                 mark = "+" if value["status"] == "added" else "-"
-                format_value = formatted_value(value.get('changes'), new_depth)
-                lines.append(f"{space[:-2]}{mark} {value['key']}: {format_value}")  # noqa E501
+                new_data = formatted_value(value.get('changes'), new_depth)
+                lines.append(f"{space[:-2]}{mark} {value['key']}: {new_data}")
 
         result = itertools.chain("{", lines, [space_for_last_string + "}"])
         return '\n'.join(result)

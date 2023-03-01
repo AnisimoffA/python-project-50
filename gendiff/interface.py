@@ -12,7 +12,7 @@ def file_opener(file):
         data = open(file)
     elif file_format == 'yaml' or file_format == 'yml':
         file_format = 'yaml'
-        data = Path(file_name + "." + file_format).read_text()
+        data = Path(file).read_text()
     return data, file_format
 
 
