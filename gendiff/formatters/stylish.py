@@ -1,9 +1,7 @@
 import itertools
-from gendiff.interface import none_to_null
 
 
 def to_stylish(value, replacer='    ', depth=1):  # noqa C901
-    value = none_to_null(value)
 
     def iter_(current_value, depth):
         new_depth = depth + 1
@@ -18,11 +16,20 @@ def to_stylish(value, replacer='    ', depth=1):  # noqa C901
                 lines.append(f"{space[:-2]}- {value['key']}: {format_old}")
                 lines.append(f"{space[:-2]}+ {value['key']}: {format_new}")
 
-            if value["status"] == "nested" or value["status"] == "same":
+            if value["status"] == "nested":
                 new_data = formatted_value(value.get('changes'), new_depth)
                 lines.append(f"{space}{value['key']}: {new_data}")
 
-            if value["status"] == "added" or value["status"] == "removed":
+            if value["status"] == "same":
+                new_data = formatted_value(value.get('changes'), new_depth)
+                lines.append(f"{space}{value['key']}: {new_data}")
+
+            if value["status"] == "added":
+                mark = "+" if value["status"] == "added" else "-"
+                new_data = formatted_value(value.get('changes'), new_depth)
+                lines.append(f"{space[:-2]}{mark} {value['key']}: {new_data}")
+
+            if value["status"] == "removed":
                 mark = "+" if value["status"] == "added" else "-"
                 new_data = formatted_value(value.get('changes'), new_depth)
                 lines.append(f"{space[:-2]}{mark} {value['key']}: {new_data}")
@@ -38,12 +45,16 @@ def formatted_value(data, depth):
     space_for_last_string = (depth - 1) * replacer
     lines = []
 
-    if isinstance(data, int) or isinstance(data, str):
-        return data
     if isinstance(data, dict):
         for key, val in data.items():
             lines.append(f'{space}{key}: {formatted_value(val, depth+1)}')
         result = itertools.chain("{", lines, [space_for_last_string + "}"])
         return '\n'.join(result)
-    if isinstance(data, list):
+    elif isinstance(data, list):
         return to_stylish(data, depth=depth)
+    else:
+        if isinstance(data, bool):
+            return 'true' if data else 'false'
+        elif data is None:
+            return 'null'
+        return data
