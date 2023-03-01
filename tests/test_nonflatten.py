@@ -3,7 +3,7 @@ from gendiff import generate_diff
 
 
 json_files = ("tests/fixtures/nested_before.json", "tests/fixtures/nested_after.json") # noqa E501
-yaml_files = ("tests/fixtures/nested_before.yml", "tests/fixtures/nested_after.yml") # noqa E501
+yaml_files = ("tests/fixtures/nested_before.yaml", "tests/fixtures/nested_after.yaml") # noqa E501
 
 params = [
     (json_files, "stylish", "tests/fixtures/correct_nested_stylish.txt"),

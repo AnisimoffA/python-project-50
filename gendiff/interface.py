@@ -11,17 +11,16 @@ def file_opener(file):
         data = open(file)
     elif file_format == 'yaml':
         data = Path(file).read_text()
+        
     elif file_format == 'yml':
-        file_format = 'yaml'
-        file_name = file.split(".")[0]
-        data = Path(file_name + "." + file_format).read_text()
+        data = Path(file).read_text()
     return data, file_format
 
 
 def parser(data, format):
-    if format == "yaml":
+    if format == "yaml" or format == "yml":
         return yaml.safe_load(data)
-    elif format == "json":
+    if format == "json":
         return json.load(data)
     return "incorrect format"
 
